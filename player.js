@@ -22,8 +22,6 @@ function listTrack (track, index, arr) {
  */
 function play (track, preload = false) {
 
-	console.log('play ' + track.title);
-
 	var player;
 	var trackListing;
 	var index;

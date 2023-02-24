@@ -1,0 +1,24 @@
+/* structural */
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;
+}
+
+/* tracks */
+
+.track:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.track.selected {
+	font-weight: bold;
+}
+
+/* player */
+
+.player figcaption {
+	padding: 0.5em 0;
+	font-size: 1.25em;
+}

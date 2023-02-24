@@ -1,19 +1,19 @@
+var player = document.getElementById('audio');
+var currentTrackIndex = 0;
+
 /**
  * list tracks
  */
 function listTrack (track, index, arr) {
 
-	var trackDiv;
-	var trackListContainer;
-
-	trackDiv = document.createElement('div');
+	var trackDiv = document.createElement('div');
 	trackDiv.classList.add('track');
 	trackDiv.innerHTML = track.title;
 	trackDiv.addEventListener("click", function(){
 	    play(track);
 	}, false);
 
-	trackListContainer = document.getElementById('trackList');
+	var trackListContainer = document.getElementById('trackList');
 	trackListContainer.appendChild( trackDiv ); 
 }
 
@@ -22,33 +22,55 @@ function listTrack (track, index, arr) {
  */
 function play (track, preload = false) {
 
-	var player;
-	var trackListing;
-	var index;
-
-	index = library.findIndex(function(t, index) {
-		return t.title == track.title;
+	var index = library.findIndex(function(t, index) {
+		return t.filename == track.filename;
 	});
 
-	trackListing = document.getElementsByClassName('track');
-	trackListing.className = 'track';
+	currentTrackIndex = index;
 
-	trackListing = document.querySelectorAll('track:nth-child(' + index + ')');
-	trackListing.addStyle = trackListing.className + " selected";
+	var trackListings = document.getElementsByClassName('track');
+	for (let i = 0; i < trackListings.length; i++) {
+		trackListings[i].className = 'track';
+	}
+
+	var trackListing = document.querySelector('.track:nth-child(' + (index+1) + ')');
+	trackListing.className = trackListing.className + " selected";
 
 	document.getElementById('playerInfo').innerHTML = 'Playing: ' + track.title;
 
-	player = document.getElementById('audio');
 	player.src = track.filename;
-
 	if (!preload) {
 		player.autoplay = true;
 	}
 }
 
-function go () {
+function setupPlayer() {
 
-	var firstTrack;
+	// load our first track into player
+	firstTrack = library[0];
+	play(firstTrack, true);
+
+	player.addEventListener("ended", playNextTrack);
+}
+
+function playNextTrack() {
+
+	var nextTrackIndex = currentTrackIndex + 1;
+
+	// if there is a track after
+	nextTrack = library[nextTrackIndex];
+	if (typeof nextTrack !== 'undefined') {
+
+		// play next track
+		play(nextTrack);
+		return true;
+	}
+
+	// do nothing
+	return false;
+}
+
+function go () {
 
 	// check we have tracks to load
 	if (!Array.isArray(library) || !library.length) {
@@ -61,9 +83,8 @@ function go () {
 	// list tracks
 	library.forEach(listTrack);
 	
-	// load our first track into player
-	firstTrack = library[0];
-	play(firstTrack, true);
+	// setup player
+	setupPlayer();
 }
 
 // let's go!

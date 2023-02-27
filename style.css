@@ -1,3 +1,19 @@
+body {
+	background: lightgrey;
+}
+
+button {
+	cursor: pointer;
+	border-radius: 0;
+	border: 0;
+	font-size: 1.5em;
+	padding: 0.5em;
+}
+
+button.selected {
+	color: grey;
+}
+
 /* structural */
 
 .container {
@@ -7,9 +23,14 @@
 
 /* tracks */
 
+.track {
+	padding: 0.25em 0.5em;
+}
+
 .track:hover {
 	text-decoration: underline;
 	cursor: pointer;
+	background: white;
 }
 
 .track.selected {
@@ -21,4 +42,8 @@
 .player figcaption {
 	padding: 0.5em 0;
 	font-size: 1.25em;
+}
+
+#audioControls {
+	margin: auto;
 }

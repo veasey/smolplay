@@ -1,19 +1,26 @@
 var player = document.getElementById('audio');
 var currentTrackIndex = 0;
 
+var loop = false;
+
 /**
  * list tracks
  */
 function listTrack (track, index, arr) {
 
-	var trackDiv = document.createElement('div');
+	let trackDiv = document.createElement('div');
 	trackDiv.classList.add('track');
+	
 	trackDiv.innerHTML = track.title;
-	trackDiv.addEventListener("click", function(){
+	if (typeof track.album !== 'undefined') {
+		trackDiv.innerHTML = track.album + ' - ' + trackDiv.innerHTML;
+	}
+
+	trackDiv.addEventListener('click', function(){
 	    play(track);
 	}, false);
 
-	var trackListContainer = document.getElementById('trackList');
+	let trackListContainer = document.getElementById('trackList');
 	trackListContainer.appendChild( trackDiv ); 
 }
 
@@ -22,18 +29,18 @@ function listTrack (track, index, arr) {
  */
 function play (track, preload = false) {
 
-	var index = library.findIndex(function(t, index) {
+	let index = library.findIndex(function(t, index) {
 		return t.filename == track.filename;
 	});
 
 	currentTrackIndex = index;
 
-	var trackListings = document.getElementsByClassName('track');
+	let trackListings = document.getElementsByClassName('track');
 	for (let i = 0; i < trackListings.length; i++) {
 		trackListings[i].className = 'track';
 	}
 
-	var trackListing = document.querySelector('.track:nth-child(' + (index+1) + ')');
+	let trackListing = document.querySelector('.track:nth-child(' + (index+1) + ')');
 	trackListing.className = trackListing.className + " selected";
 
 	document.getElementById('playerInfo').innerHTML = 'Playing: ' + track.title;
@@ -55,7 +62,13 @@ function setupPlayer() {
 
 function playNextTrack() {
 
-	var nextTrackIndex = currentTrackIndex + 1;
+	let nextTrackIndex;
+
+	if (loop) {
+		nextTrackIndex = currentTrackIndex;
+	} else {
+		nextTrackIndex = currentTrackIndex + 1;
+	}
 
 	// if there is a track after
 	nextTrack = library[nextTrackIndex];
@@ -68,6 +81,29 @@ function playNextTrack() {
 
 	// do nothing
 	return false;
+}
+
+function shuffle() {
+
+	let trackListContainer = document.getElementById('trackList');
+	trackListContainer.innerHTML = '';
+
+  	let currentIndex = library.length,  randomIndex;
+
+	while (currentIndex != 0) {
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+    	currentIndex--;
+		[library[currentIndex], library[randomIndex]] = [library[randomIndex], library[currentIndex]];
+  	}
+
+	library.forEach(listTrack);
+	currentTrackIndex = -1;
+	playNextTrack();
+}
+
+function toggleLoop() {
+	loop = !loop;
+	document.getElementById("loop").classList.toggle('selected');
 }
 
 function go () {

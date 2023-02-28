@@ -1,17 +1,38 @@
 body {
-	background: lightgrey;
+	background: #F3EFE0;
+	color: #222222;
+	margin: 0;
+}
+
+a, a:visited {
+	color: #22A39F;
+}
+
+a:hover {
+	color: #32C3BF;
 }
 
 button {
 	cursor: pointer;
 	border-radius: 0;
 	border: 0;
+	background: #22A39F;
+	color: #434242;
 	font-size: 1.5em;
 	padding: 0.5em;
 }
 
+button:hover {
+	background: #32C3BF;
+	color: #636262;
+}
+
 button.selected {
-	color: grey;
+	background: #12938F;
+	color: #333232;
+}
+
+#footer {
 }
 
 /* structural */
@@ -19,28 +40,37 @@ button.selected {
 .container {
 	max-width: 940px;
 	margin: 0 auto;
+	padding: 0 0.25em;
 }
 
 /* tracks */
 
 .track {
-	padding: 0.25em 0.5em;
+	padding: 0.25em;
+	width: auto;
+	display: inline-block;
 }
 
 .track:hover {
-	text-decoration: underline;
+	background: #434242;
+	color: #F3EFE0;
 	cursor: pointer;
-	background: white;
 }
 
 .track.selected {
-	font-weight: bold;
+	background: #434242;
+	color: #F3EFE0;
 }
 
 /* player */
 
-.player figcaption {
-	padding: 0.5em 0;
+#player {
+	background: #434242;
+	color: white;
+}
+
+#player figcaption {
+	padding: 0.25em 0;
 	font-size: 1.25em;
 }
 

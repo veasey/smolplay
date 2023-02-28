@@ -15,3 +15,19 @@ that may be developed in the future.
 2. Copy `example_library.json` and rename `library.json`;
 
    2a. enter Title and Filename as a minimum for each track.
+
+
+## Todo
+
+- [x] footer that links to this repo
+- [x] a nice colour scheme
+
+- [ ] filter by tags
+- [ ] filter by album
+- [ ] an all tracks button
+- [ ] when playing a track, show its album and tag information that is clickable
+
+- [ ] download button
+- [ ] share button (current playlist filtered)
+
+- [ ] make it look somewhat presentable

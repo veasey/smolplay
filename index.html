@@ -1,14 +1,13 @@
 <html>
 	<head>
-		<title>HTML5 Music Player</title>
+		<title>smolplay</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 
 	<body>
 
-		<div class="container">
-
-			<div class="player">
+		<div id="player">
+			<div class="container">
 			    <figcaption id="playerInfo">Playing: </figcaption>
 			    <audio id="audio"></audio>
 				<div id="audioControls"> 
@@ -20,9 +19,18 @@
 				  <button onclick="shuffle()">Shuffle</button> 
 				</div>
 			</div>
+		</div>
 
+		<div class="container">
 			<div id="trackList"></div>
+		</div>
 
+		<div id="footer">
+			<div class="container">
+				<p><b>smolplay</b> is a free, online player for sharing music.</p>
+				<p>Steal and modify to your heart's content at
+				 <a href="https://github.com/veasey/smolplay">https://github.com/veasey/smolplay</a></p>
+			</div>
 		</div>
 
 	</body>

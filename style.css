@@ -12,25 +12,6 @@ a:hover {
 	color: #32C3BF;
 }
 
-button {
-	cursor: pointer;
-	border-radius: 0;
-	border: 0;
-	background: #22A39F;
-	color: #434242;
-	font-size: 1.5em;
-	padding: 0.5em;
-}
-
-button:hover {
-	background: #32C3BF;
-	color: #636262;
-}
-
-button.selected {
-	background: #12938F;
-	color: #333232;
-}
 
 #footer {
 }
@@ -74,6 +55,23 @@ button.selected {
 	font-size: 1.25em;
 }
 
-#audioControls {
-	margin: auto;
+button {
+	cursor: pointer;
+	border-radius: 0;
+	border: 0;
+	background: #22A39F;
+	color: #434242;
+	font-size: 1.25em;
+	padding: 0.5em;
+	width: 16%;
+}
+
+button:hover {
+	background: #32C3BF;
+	color: #636262;
+}
+
+button.selected {
+	background: #12938F;
+	color: #333232;
 }

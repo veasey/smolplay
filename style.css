@@ -48,6 +48,7 @@ a:hover {
 #player {
 	background: #434242;
 	color: white;
+	margin-bottom: 1em;
 }
 
 #player figcaption {

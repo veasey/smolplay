@@ -56,6 +56,29 @@ a:hover {
 	font-size: 1.25em;
 }
 
+#player .albumTitle:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#player .tag {
+	color: #22A39F;
+	display: inline-block;
+	font-size: 0.75em;
+	padding: 0.25em;
+	margin-right: 0.15em;
+	background: #222;
+}
+
+#player .tag:hover {
+	cursor: pointer;
+	color: #32C3BF;
+}
+
+#player .tag.selected {
+	font-weight: bold;
+}
+
 button {
 	cursor: pointer;
 	border-radius: 0;
@@ -75,4 +98,8 @@ button:hover {
 button.selected {
 	background: #12938F;
 	color: #333232;
+}
+
+button#clearFilter {
+	display: none;
 }

@@ -8,7 +8,13 @@
 
 		<div id="player">
 			<div class="container">
-			    <figcaption id="playerInfo">Playing: </figcaption>
+
+
+				<button id="clearFilter" onclick="clearFilter()">Clear Filter</button> 
+
+			    <figcaption id="playerInfo"></figcaption>
+			    <span id="tags"></span>
+			    
 			    <audio id="audio"></audio>
 				<div id="audioControls"> 
 				  <button onclick="document.getElementById('audio').play()">Play</button> 

@@ -1,7 +1,12 @@
+var url = new URL(window.location.href);
+var album = url.searchParams.get("album");
+var tag = url.searchParams.get("tag");
+
 var player = document.getElementById('audio');
 var currentTrackIndex = 0;
 
 var loop = false;
+var filteredLibrary = library;
 
 /**
  * list tracks
@@ -12,7 +17,9 @@ function listTrack (track, index, arr) {
 	trackDiv.classList.add('track');
 	
 	trackDiv.innerHTML = track.title;
-	if (typeof track.album !== 'undefined') {
+	
+	// add album name
+	if (typeof track.album !== 'undefined' && !album) {
 		trackDiv.innerHTML = track.album + ' - ' + trackDiv.innerHTML;
 	}
 
@@ -29,7 +36,7 @@ function listTrack (track, index, arr) {
  */
 function play (track, preload = false) {
 
-	let index = library.findIndex(function(t, index) {
+	let index = filteredLibrary.findIndex(function(t, index) {
 		return t.filename == track.filename;
 	});
 
@@ -43,7 +50,7 @@ function play (track, preload = false) {
 	let trackListing = document.querySelector('.track:nth-child(' + (index+1) + ')');
 	trackListing.className = trackListing.className + " selected";
 
-	document.getElementById('playerInfo').innerHTML = 'Playing: ' + track.title;
+	displayPlaying(track);
 
 	player.src = track.filename;
 	if (!preload) {
@@ -51,10 +58,51 @@ function play (track, preload = false) {
 	}
 }
 
+function displayPlaying(track) {
+
+	let nowPlayingString = track.title;
+	let tagContainer = document.getElementById('tags');
+
+	tagContainer.innerHTML = '';
+
+	// albun
+	if (typeof track.album !== 'undefined') {
+		let link = url + '?album=' + track.album;
+		nowPlayingString = '<span class="albumTitle" onclick="applyAlbumFilter(\''+track.album+'\')">';
+		nowPlayingString += track.album + '</span> - ' + track.title;
+	}
+
+	// tags
+	if (typeof track.tags !== 'undefined' && track.tags.length) {
+
+	
+
+		for(let i=0; i<track.tags.length; i++) {
+
+			let tagName = track.tags[i];
+
+			let tagDiv = document.createElement('div');
+			tagDiv.classList.add('tag');
+			if (tagName == tag) {
+				tagDiv.classList.add('selected');
+			}
+			tagDiv.addEventListener('click', function(){
+			    applyTagFilter(tagName);
+			}, false);			
+			tagDiv.innerHTML = tagName;
+
+			tagContainer.appendChild( tagDiv );
+		}
+	}	
+	
+	nowPlayingString = 'Playing: ' + nowPlayingString;
+	document.getElementById('playerInfo').innerHTML = nowPlayingString;
+}
+
 function setupPlayer() {
 
 	// load our first track into player
-	firstTrack = library[0];
+	firstTrack = filteredLibrary[0];
 	play(firstTrack, true);
 
 	player.addEventListener("ended", playNextTrack);
@@ -85,8 +133,7 @@ function playNextTrack() {
 
 function shuffle() {
 
-	let trackListContainer = document.getElementById('trackList');
-	trackListContainer.innerHTML = '';
+	clearTrackList();
 
   	let currentIndex = library.length,  randomIndex;
 
@@ -101,25 +148,80 @@ function shuffle() {
 	playNextTrack();
 }
 
+function clearTrackList() {
+	let trackListContainer = document.getElementById('trackList');
+	trackListContainer.innerHTML = '';
+}
+
 function toggleLoop() {
 	loop = !loop;
 	document.getElementById("loop").classList.toggle('selected');
 }
 
+function clearFilter() {
+
+	let url = new URL(window.location.href);
+	let params = new URLSearchParams(url.search);
+
+	params.delete('album');
+	params.delete('tag');
+
+	window.location.search = params;
+}
+
+function applyAlbumFilter(album) {
+
+	let params = new URLSearchParams(url.search);
+	params.set('album', album);
+	window.location.search = params;
+}
+
+function applyTagFilter(tag) {
+
+	let params = new URLSearchParams(url.search);
+	params.set('tag', tag);
+	window.location.search = params;
+}
+
+function filterByTag(track) {
+
+	if (typeof track.tags === "undefined") {
+		return false;
+	}
+
+	if (track.tags.includes(tag)) {
+		return true;
+	}
+
+	return false;
+}
+
 function go () {
 
+	// filtering
+	if (album || tag) {
+
+		// show clear filter button
+		document.getElementById('clearFilter').style.display = "block";
+
+		if (album) {
+			filteredLibrary = library.filter(track => track.album == album);
+		}
+
+		if (tag) {
+			filteredLibrary = library.filter(filterByTag);
+		}
+	}
+
 	// check we have tracks to load
-	if (!Array.isArray(library) || !library.length) {
+	if (!Array.isArray(filteredLibrary) || !filteredLibrary.length) {
 
 		var error = 'Error: No tracks to load';
 		document.getElementById('trackList').innerHTML = error;
 		return false;
 	}
 
-	// list tracks
-	library.forEach(listTrack);
-	
-	// setup player
+	filteredLibrary.forEach(listTrack);
 	setupPlayer();
 }
 

@@ -60,22 +60,25 @@ function play (track, preload = false) {
 
 function displayPlaying(track) {
 
-	let nowPlayingString = track.title;
-	let tagContainer = document.getElementById('tags');
+	let nowPlayingString = '';
+	
+	// track title
+	let title = '<a href="' + track.filename + '" download>' + track.title + '</a>'; 
 
-	tagContainer.innerHTML = '';
-
-	// albun
+	// album
 	if (typeof track.album !== 'undefined') {
 		let link = url + '?album=' + track.album;
 		nowPlayingString = '<span class="albumTitle" onclick="applyAlbumFilter(\''+track.album+'\')">';
-		nowPlayingString += track.album + '</span> - ' + track.title;
+		nowPlayingString += track.album + '</span> - ' + title;
+	} else {
+		nowPlayingString = title;
 	}
 
 	// tags
-	if (typeof track.tags !== 'undefined' && track.tags.length) {
+	let tagContainer = document.getElementById('tags');
+	tagContainer.innerHTML = '';
 
-	
+	if (typeof track.tags !== 'undefined' && track.tags.length) {
 
 		for(let i=0; i<track.tags.length; i++) {
 
@@ -93,7 +96,7 @@ function displayPlaying(track) {
 
 			tagContainer.appendChild( tagDiv );
 		}
-	}	
+	}
 	
 	nowPlayingString = 'Playing: ' + nowPlayingString;
 	document.getElementById('playerInfo').innerHTML = nowPlayingString;
@@ -135,15 +138,15 @@ function shuffle() {
 
 	clearTrackList();
 
-  	let currentIndex = library.length,  randomIndex;
+  	let currentIndex = filteredLibrary.length,  randomIndex;
 
 	while (currentIndex != 0) {
 	    randomIndex = Math.floor(Math.random() * currentIndex);
     	currentIndex--;
-		[library[currentIndex], library[randomIndex]] = [library[randomIndex], library[currentIndex]];
+		[filteredLibrary[currentIndex], filteredLibrary[randomIndex]] = [filteredLibrary[randomIndex], filteredLibrary[currentIndex]];
   	}
 
-	library.forEach(listTrack);
+	filteredLibrary.forEach(listTrack);
 	currentTrackIndex = -1;
 	playNextTrack();
 }
@@ -170,16 +173,16 @@ function clearFilter() {
 }
 
 function applyAlbumFilter(album) {
-
-	let params = new URLSearchParams(url.search);
-	params.set('album', album);
-	window.location.search = params;
+	setParam('album', album);
 }
 
 function applyTagFilter(tag) {
+	setParam('tag', tag);
+}
 
+function setParam(param, value) {
 	let params = new URLSearchParams(url.search);
-	params.set('tag', tag);
+	params.set(param, value);
 	window.location.search = params;
 }
 

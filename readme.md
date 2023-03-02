@@ -21,18 +21,14 @@ that may be developed in the future.
 
 - [x] footer that links to this repo
 - [x] a nice colour scheme
-
 - [x] filter by tags
 - [x] filter by album
 - [x] an all tracks button
 - [x] when playing a track, show its album and tag information that is clickable
-
-- [ ] allow a single track to be linked to
-
-- [ ] download button
-- [ ] share button (current playlist filtered)
-
+- [x] allow a single track to be linked to
+- [x] download button
+- [x] share button (current playlist filtered)
 - [x] make it look somewhat presentable
-
+- [x] mobile styling / make buttons look better
 - [ ] toggle list view vs large button view
 - [ ] allow images to be set for background of tracks / album art for albums

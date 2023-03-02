@@ -2,6 +2,7 @@ body {
 	background: #F3EFE0;
 	color: #222222;
 	margin: 0;
+	font-family: Courier, Monaco, monospace;
 }
 
 a, a:visited {
@@ -12,8 +13,9 @@ a:hover {
 	color: #32C3BF;
 }
 
-
 #footer {
+	border-top: 2px solid #434242;
+	margin-top: 1.5em;
 }
 
 /* structural */
@@ -21,13 +23,19 @@ a:hover {
 .container {
 	max-width: 940px;
 	margin: 0 auto;
-	padding: 0 0.25em;
 }
+
+@media (max-width: 940px) {
+  .padding {
+		padding: 0 0.25em;
+	}
+}
+
 
 /* tracks */
 
 .track {
-	padding: 0.25em;
+	padding: 0.25 0.5em;
 	width: auto;
 	display: inline-block;
 }
@@ -61,12 +69,21 @@ a:hover {
 	text-decoration: underline;
 }
 
+#player #playerInfo a {
+	color: white;
+	text-decoration: none;
+}
+
+#player #playerInfo a:hover {
+	text-decoration: underline;
+}
+
 #player .tag {
 	color: #22A39F;
 	display: inline-block;
-	font-size: 0.75em;
 	padding: 0.25em;
 	margin-right: 0.15em;
+	margin-bottom: 0.15em;
 	background: #222;
 }
 
@@ -79,20 +96,34 @@ a:hover {
 	font-weight: bold;
 }
 
+#player .trackinformation {
+	display: block;
+	width: 100%;
+}
+
+#player #audioControls {
+	display: flex;
+}
+
+#player #audioControls button {
+	flex: 1;
+	box-sizing: border-box;
+	border-right: 1px solid #42C3BF;
+	border-left: 1px solid #02938F;
+}
+
 button {
 	cursor: pointer;
 	border-radius: 0;
 	border: 0;
 	background: #22A39F;
-	color: #434242;
-	font-size: 1.25em;
+	color: #F3EFE0;
 	padding: 0.5em;
-	width: 16%;
 }
 
 button:hover {
 	background: #32C3BF;
-	color: #636262;
+	color: white;
 }
 
 button.selected {

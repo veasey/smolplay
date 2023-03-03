@@ -34,6 +34,8 @@ a:hover {
 /* tracks */
 
 .track {
+	background: #FFE;
+	border-right: 1px solid #F3EFE0;
 	padding: 0.25 0.5em;
 	width: auto;
 	display: inline-block;

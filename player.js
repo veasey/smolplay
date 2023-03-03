@@ -17,11 +17,6 @@ function listTrack (track, index, arr) {
 	trackDiv.classList.add('track');
 	
 	trackDiv.innerHTML = track.title;
-	
-	// add album name
-	if (typeof track.album !== 'undefined' && !album) {
-		trackDiv.innerHTML = track.album + ' - ' + trackDiv.innerHTML;
-	}
 
 	trackDiv.addEventListener('click', function(){
 	    play(track);

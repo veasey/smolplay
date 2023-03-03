@@ -19,9 +19,3 @@ Supported fields are:
 | tags        | ["pop", "disco "] | No       |
 | album       | "Thriller"        | No       |
 | image       | "thriller.jpg"    | No       |
-
-### Future Goals
-
-- [ ] make a how to video about how to deploy and use
-- [ ] fork this repo to make an ambient, looping soundboard
-- [ ] have this read from a .json file that is build via a GUI backend

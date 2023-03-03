@@ -99,10 +99,16 @@ function displayPlaying(track) {
 	}
 
 	// album art
-	let trackImage = document.getElementById('image');
-	trackImage.style.display = 'none'; 
+	let imageDiv  = document.getElementById('imageContainer');
+	let imageLink = document.getElementById('link');
+	let image     = document.getElementById('image');
+
+	imageDiv.style.display = 'none'; 
+
 	if (typeof track.image !== 'undefined') {
-		trackImage.style.display = 'block'; 
+		imageDiv.style.display = 'block';
+		imageLink.href = track.image;
+		image.src = track.image;
 	}
 	
 	nowPlayingString = 'Playing: ' + nowPlayingString;

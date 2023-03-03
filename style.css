@@ -109,11 +109,11 @@ a:hover {
 	justify-content: space-between;
 }
 
-#player #currentTrack #image, #player #currentTrack #image {
+#player #currentTrack #imageContainer, #player #currentTrack #imageContainer {
 	display: none;
 }
-#player #currentTrack #image, #player #currentTrack #image,
-#player #currentTrack #image, #player #currentTrack #image img {
+#player #currentTrack #imageContainer, #player #currentTrack #imageContainer,
+#player #currentTrack #imageContainer, #player #currentTrack #imageContainer img {
 	width: 100%;
 	max-width: 200px;
 } 

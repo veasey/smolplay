@@ -31,7 +31,6 @@ a:hover {
 	}
 }
 
-
 /* tracks */
 
 .track {
@@ -100,6 +99,24 @@ a:hover {
 	display: block;
 	width: 100%;
 }
+
+#player #currentTrack #info {
+	float: left;
+}
+
+#player #currentTrack {
+	display: flex;
+	justify-content: space-between;
+}
+
+#player #currentTrack #image, #player #currentTrack #image {
+	display: none;
+}
+#player #currentTrack #image, #player #currentTrack #image,
+#player #currentTrack #image, #player #currentTrack #image img {
+	width: 100%;
+	max-width: 200px;
+} 
 
 #player #audioControls {
 	display: flex;

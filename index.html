@@ -11,9 +11,25 @@
 
 				<button id="clearFilter" onclick="clearFilter()">X Clear Filter</button>
 				<button id="clearFilter" onclick="clearFilter()">Larger Tracks</button>
-				
-			    <figcaption id="playerInfo" class="padding"></figcaption>
-			    <span id="tags"></span>
+
+				<div id="currentTrack">
+
+					<!-- track information -->
+					<div id="info">
+
+						<!-- track title -->
+					    <figcaption id="title" class="padding"></figcaption>
+					    
+					    <!-- track meta tags (genre etc.) -->
+					    <span id="tags"></span>
+					</div>
+
+					<!-- album art -->
+				    <div id="image">
+						<a href="Cat03.jpg" target=”_blank”><img src="Cat03.jpg"></a>
+					</div>
+				</div>			   
+
 			    
 			    <audio id="audio"></audio>
 				<div id="audioControls"> 
@@ -24,6 +40,7 @@
 				  <button onclick="toggleLoop()" id="loop">Loop</button> 
 				  <button onclick="shuffle()">Shuffle</button> 
 				</div>
+
 			</div>
 		</div>
 

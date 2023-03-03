@@ -97,9 +97,16 @@ function displayPlaying(track) {
 			tagContainer.appendChild( tagDiv );
 		}
 	}
+
+	// album art
+	let trackImage = document.getElementById('image');
+	trackImage.style.display = 'none'; 
+	if (typeof track.image !== 'undefined') {
+		trackImage.style.display = 'block'; 
+	}
 	
 	nowPlayingString = 'Playing: ' + nowPlayingString;
-	document.getElementById('playerInfo').innerHTML = nowPlayingString;
+	document.getElementById('title').innerHTML = nowPlayingString;
 }
 
 function setupPlayer() {

@@ -17,18 +17,14 @@ that may be developed in the future.
    2a. enter Title and Filename as a minimum for each track.
 
 
-## Todo
+### Todo: Soundboard Mode
 
-- [x] footer that links to this repo
-- [x] a nice colour scheme
-- [x] filter by tags
-- [x] filter by album
-- [x] an all tracks button
-- [x] when playing a track, show its album and tag information that is clickable
-- [x] allow a single track to be linked to
-- [x] download button
-- [x] share button (current playlist filtered)
-- [x] make it look somewhat presentable
-- [x] mobile styling / make buttons look better
+For people who are not looking for less of a juke box and more for some nice tiles to press to play ambient tracks this is what is next in the pipeline.
+
 - [ ] toggle list view vs large button view
-- [ ] allow images to be set for background of tracks / album art for albums
+- [ ] allow images to be set for background of tracks
+
+Possible this could be an entirely new template, but I would like this to be toggleable.
+
+Would it be helpful to have both "kinds" of albums listed together, and on opening a track that is an
+ambient collection, have it change styles to the tile view?

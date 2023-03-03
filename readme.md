@@ -17,7 +17,9 @@ that may be developed in the future.
    2a. enter Title and Filename as a minimum for each track.
 
 
-### Todo: Soundboard Mode
+### Todo
+
+#### Soundboard Mode
 
 For people who are not looking for less of a juke box and more for some nice tiles to press to play ambient tracks this is what is next in the pipeline.
 
@@ -28,3 +30,8 @@ Possible this could be an entirely new template, but I would like this to be tog
 
 Would it be helpful to have both "kinds" of albums listed together, and on opening a track that is an
 ambient collection, have it change styles to the tile view?
+
+#### Deployment & Functionality
+
+- [ ] make a how to video about how to deploy and use
+- [ ] simplify this document

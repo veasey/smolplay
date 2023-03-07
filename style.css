@@ -41,6 +41,7 @@ a:hover {
 	display: inline-block;
 	height: 2em;
 	line-height: 2em;	
+	font-weight: bold;
 }
 
 .track:hover {
@@ -64,7 +65,6 @@ a:hover {
 
 #player figcaption {
 	padding: 0.25em 0;
-	font-size: 1.25em;
 }
 
 #player .albumTitle:hover {
@@ -106,6 +106,7 @@ a:hover {
 
 #player #currentTrack #info {
 	float: left;
+	padding: 0.5em;
 }
 
 #player #currentTrack {
@@ -134,6 +135,7 @@ a:hover {
 }
 
 button {
+	
 	cursor: pointer;
 	border-radius: 0;
 	border: 0;

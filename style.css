@@ -39,6 +39,8 @@ a:hover {
 	padding: 0.25 0.5em;
 	width: auto;
 	display: inline-block;
+	height: 2em;
+	line-height: 2em;	
 }
 
 .track:hover {

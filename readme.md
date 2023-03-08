@@ -19,3 +19,7 @@ Supported fields are:
 | tags        | ["pop", "disco "] | No       |
 | album       | "Thriller"        | No       |
 | image       | "thriller.jpg"    | No       |
+
+## Stuck?
+
+Any issues, just get in touch and let me know!
